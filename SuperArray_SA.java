@@ -16,6 +16,12 @@
  * Adds functionality to std Java array:
  *  resizability
  *  ability to print meaningfully
+ * add
+ * add-at-index
+ * remove
+ * 
+ * PHASE I COMPLETE
+ * PHASE II in progress...
  *****************************/
 
 public class SuperArray {
