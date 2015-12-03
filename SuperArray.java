@@ -1,4 +1,4 @@
-// Team SMilyFace -- Maddie Ostergaard, Shuamik Ashraf
+// Team SMileyFace -- Maddie Ostergaard, Shaumik Ashraf
 // APCS1 pd9
 // HW40 -- Array of Grade 316
 // 2015-12-2
