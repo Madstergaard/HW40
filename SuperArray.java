@@ -1,3 +1,9 @@
+// Team SMilyFace -- Maddie Ostergaard, Shuamik Ashraf
+// APCS1 pd9
+// HW40 -- Array of Grade 316
+// 2015-12-2
+
+
 /*****************************
  * SKELETON for
  * class SuperArray --  A wrapper class for an array. 
@@ -78,21 +84,69 @@ public class SuperArray {
 
     // ~~~~~~~~~~~~~~ PHASE II ~~~~~~~~~~~~~~
     //adds an item after the last item
-    public void add( int newVal ) { }
+    public void add( int newVal ) {
+	int[] new_data = new int[_data.length + 1];
+	for (int i = 0; i <= _lastPos; i ++){
+	    new_data[i] = _data[i];
+	}
+	new_data[_lastPos +1] = newVal;
+	if (newVal > 0){
+	    _lastPos++;
+	    _size++;
+	}
+	_data = new_data;
+    }
 
 
     //inserts an item at index
     //shifts existing elements to the right
-    public void add( int index, int newVal ) { }
+    public void add( int index, int newVal ) {
+	if (newVal > 0){
+	    _lastPos++;
+	    _size++;
+	}
+	int[] foo = new int[_data.length + 1];
+	for (int i = 0; i < index; i++){
+	    foo[i] = _data[i];
+	}
+	foo[index] = newVal;
+	for (int i = index; i < _data.length; i++){
+	    foo[i + 1] = _data[i];
+	}
+	_data = foo;
+    }
 
 
     //removes the item at index
     //shifts elements left to fill in newly-empted slot
-    public void remove( int index ) { }
+    public void remove( int index ) {
+	if (_data[index] > 0){
+	    _lastPos--;
+	    _size--;
+	}
+	int[] foo = new int[_data.length - 1];
+	for (int i = 0; i < index; i++){
+	    foo[i] = _data[i];
+	}
+	for (int i = index + 1; i < _data.length; i++){
+	    foo[i - 1] = _data[i];
+	}
+	_data = foo;
+	
+    }
 
 
     //return number of meaningful items in _data
-    public int size() { }
+    public int size() {
+	_size = 0;
+	for (int i = 0; i < _data.length; i ++){
+	    if (_data[i] > 0){
+		_size++;
+	    }
+	}
+	return _size;
+		
+    }
 
 
     //main method for testing
@@ -119,8 +173,9 @@ public class SuperArray {
 	System.out.println("Expanded SuperArray curtis:");
 	curtis.expand();
 	System.out.println(curtis);
+	System.out.println("Size = " + curtis.size());
 
-	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	SuperArray mayfield = new SuperArray();
 	System.out.println("Printing empty SuperArray mayfield...");
 	System.out.println(mayfield);
@@ -130,16 +185,18 @@ public class SuperArray {
 	  mayfield.add(3);
 	  mayfield.add(2);
 	  mayfield.add(1);
-
+	 
 	  System.out.println("Printing populated SuperArray mayfield...");
 	  System.out.println(mayfield);
 
 	  mayfield.remove(3);
 	  System.out.println("Printing SuperArray mayfield post-remove...");
 	  System.out.println(mayfield);
+	  System.out.println("Size = " + mayfield.size());
 	  mayfield.remove(3);
 	  System.out.println("Printing SuperArray mayfield post-remove...");
 	  System.out.println(mayfield);
+	  System.out.println("Size = " + mayfield.size());
 
 	  mayfield.add(3,99);
 	  System.out.println("Printing SuperArray mayfield post-insert...");
@@ -150,8 +207,10 @@ public class SuperArray {
 	  mayfield.add(1,77);
 	  System.out.println("Printing SuperArray mayfield post-insert...");
 	  System.out.println(mayfield);
+	  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	//*****INSERT ANY ADDITIONAL TEST CALLS HERE*****
+	  System.out.println("Size = " + mayfield.size());
 
     }//end main
 		
